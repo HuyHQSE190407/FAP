@@ -12,6 +12,7 @@ public class FAP {
         courseList = new Course();
     }
 //hihi
+
     public void addStudentFromKeyboard() {
         String count = "N";
         do {
@@ -108,6 +109,7 @@ public class FAP {
             }
         }
     }
+
     public void removeStudentById() {
         System.out.println("----------DANH SACH SINH VIEN----------");
         listStudents.displayAll();
@@ -115,11 +117,12 @@ public class FAP {
         Scanner sc = new Scanner(System.in);
         int id = sc.nextInt();
         Student stu = listStudents.findStudentById(id);
-        if(stu != null) {
+        if (stu != null) {
             listStudents.remove(listStudents.findStudentById(id));
             System.out.println("Removed student successfully");
         }
     }
+
     public void displayStudentByMajor() {
         System.out.println("----------DANH SACH SINH VIEN CUNG NGANH----------");
         Scanner sc = new Scanner(System.in);
@@ -129,4 +132,13 @@ public class FAP {
             System.out.println(stu);
         }
     }
+
+    public void sortStudentByName() {
+        listStudents.sort(listStudents.sortStudentByNameFunction());
+        System.out.println("DANH SACH DA SAP XEP");
+        for (Student stu : listStudents) {
+            System.out.println(stu);
+        }
+    }
+
 }

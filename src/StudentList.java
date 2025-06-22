@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class StudentList extends ArrayList<Student> {
@@ -58,5 +59,10 @@ public class StudentList extends ArrayList<Student> {
             }
         }
        return rs; 
+    }
+    
+    public Comparator<Student> sortStudentByNameFunction(){
+        Comparator<Student> sortByName = (Student o1, Student o2) -> o1.getName().compareToIgnoreCase(o2.getName());
+        return sortByName;
     }
 }

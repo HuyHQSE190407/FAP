@@ -6,14 +6,14 @@ public class Tester {
         FAP system = new FAP();
         int choice = 0;
         do {
-            System.out.println("1. Add student from keyboard");
-            System.out.println("2. Print student from keyboard");
-            System.out.println("3. Find student by id");
-            System.out.println("4. Find student by name");
-            System.out.println("5. Update (name, major) by id");
-            System.out.println("6. Remove student by id");
-            System.out.println("7. Display student by major");
-            System.out.println("8. Sort student by (id, name): ");
+            System.out.println("1. Add student from keyboard"); //done
+            System.out.println("2. Print student from keyboard"); //done
+            System.out.println("3. Find student by id"); //done
+            System.out.println("4. Find student by name"); //done
+            System.out.println("5. Update (name, major) by id"); //done
+            System.out.println("6. Remove student by id"); //done
+            System.out.println("7. Display student by major"); //done
+            System.out.println("8. Sort student by (id, name): "); //done
             System.out.println("------------------------------");
             System.out.println("9. Enroll course");
             Scanner sc = new Scanner(System.in);
@@ -43,11 +43,14 @@ public class Tester {
                     system.displayStudentByMajor();
                     break;
                 case 8:
+                    system.sortStudentByName();
                     break;
                 case 9:
                     system.displayEnrroledStudent();
                     break;
+                case 10:
+                    System.exit(0);
             }
-        }while(choice <= 9);
+        }while(choice <= 10);
     }
 }
