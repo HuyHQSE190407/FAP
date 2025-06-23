@@ -1,12 +1,34 @@
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
 public class Course {
     private String code;
     private int credit;
     private ArrayList<Student> enrrolledStudent; //quan he has
+    
+    
+    //inner class
+//    class Vidu implements Comparable<Course> {
+//
+//        @Override
+//        public int compareTo(Course o1, Course o2) {
+//            return 1;
+//        }
+//        
+//    }
 
+//    public static Comparator<Course> sortByCode = new Comparator<Course>() {
+//        @Override
+//        public int compare(Course o1, Course o2) {
+//            if(o1.getCode().compareTo(o2.getCode()) > 0) {
+//                return 1;
+//            }
+//            return -1;
+//        }
+//    };
+    
     public Course() {
         code = "PRO192";
         credit = 3;

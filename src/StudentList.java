@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 public class StudentList extends ArrayList<Student> {
-
+//
     public void displayAll() {
         //way 1
 //        for (int i = 0; i < this.size(); i++) {

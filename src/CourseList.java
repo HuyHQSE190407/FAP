@@ -15,8 +15,7 @@ public class CourseList extends ArrayList<Course>{
         for (Course cs : this) {
             cs.displayCourse();
         }
-    }
-    
+    }    
     public Course findCode(String code) {
         for (Course cs : this) {
             if(cs.getCode().equals(code)) {
@@ -24,5 +23,5 @@ public class CourseList extends ArrayList<Course>{
             }
         }
         return null;
-    }
+    }   
 }
