@@ -4,6 +4,7 @@ public class Student {
     private String name;
     private String major;
 
+    public Student(){}
     public Student(int id, String name, String major) {
         this.id = id;
         this.name = name;

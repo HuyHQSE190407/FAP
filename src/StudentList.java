@@ -31,38 +31,49 @@ public class StudentList extends ArrayList<Student> {
         }
         return null;
     }
-    
+
     public ArrayList<Student> findStudentByName(String name) {
         ArrayList<Student> result = new ArrayList<>();
         for (Student s : this) {
-            if(s.getName().contains(name)) {
+            if (s.getName().contains(name)) {
                 result.add(s);
             }
         }
-        return result;    
+        return result;
     }
-        
+
     public Student updateStudentById(int id, String name, String major) {
         for (Student stu : this) {
-            if(stu.getId() == id) {
+            if (stu.getId() == id) {
                 stu.setName(name);
                 stu.setMajor(major);
             }
         }
         return null;
     }
+
     public ArrayList<Student> displayStudentByMajor(String major) {
         ArrayList<Student> rs = new ArrayList<>();
         for (Student stu : this) {
-            if(stu.getMajor().equalsIgnoreCase(major)) {
+            if (stu.getMajor().equalsIgnoreCase(major)) {
                 rs.add(stu);
             }
         }
-       return rs; 
+        return rs;
     }
-    
-    public Comparator<Student> sortStudentByNameFunction(){
-        Comparator<Student> sortByName = (Student o1, Student o2) -> o1.getName().compareToIgnoreCase(o2.getName());
-        return sortByName;
+    public Comparator<Student> sortStudentByNameFunction() {
+        return (Student o1, Student o2) -> {
+            String[] nameParts1 = o1.getName().trim().split("\\s+");
+            String[] nameParts2 = o2.getName().trim().split("\\s+");
+
+            String lastName1 = nameParts1[nameParts1.length - 1];
+            String lastName2 = nameParts2[nameParts2.length - 1];
+
+            int result = lastName1.compareToIgnoreCase(lastName2);
+            if (result == 0) {
+                return o1.getName().compareToIgnoreCase(o2.getName());
+            }
+            return result;
+        };
     }
 }
