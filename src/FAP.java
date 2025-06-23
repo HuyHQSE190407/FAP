@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class FAP {
 
     StudentList listStudents;
-    Course courseList;
+    CourseList listCourse;
 
     public FAP() {
         listStudents = new StudentList();
-        courseList = new Course();
+        listCourse = new CourseList();
     }
 //hihi
 
@@ -31,6 +31,31 @@ public class FAP {
             count = sc.nextLine();
 
         } while (count.equalsIgnoreCase("Y"));
+    }
+
+    public void addCourseFromKeyboard() {
+        String count = "N";
+        do {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter code: ");
+            String code = sc.nextLine();
+            System.out.print("Enter credit: ");
+            int credit = sc.nextInt();
+            sc.nextLine();
+            Course c = new Course();
+            c.setCode(code);
+            c.setCredit(credit);
+            listCourse.add(c);
+            System.out.println("Done");
+            System.out.print("add any more? (Y/N): ");
+            count = sc.nextLine();
+
+        } while (count.equalsIgnoreCase("Y"));
+    }
+
+    public void printCourse() {
+        System.out.println("SO MON HOC CUA TRUONG");
+        listCourse.displayAll();
     }
 
     public void printStudent() {
@@ -91,25 +116,24 @@ public class FAP {
         }
     }
 
-    public void displayEnrroledStudent() {
-        System.out.println("----------DANH SACH SINH VIEN----------");
-        listStudents.displayAll();
-        System.out.println("Enter student'Id to enroll: ");
-        Scanner sc = new Scanner(System.in);
-        int id = sc.nextInt();
-        Student stu = listStudents.findStudentById(id);
-        if (stu == null) {
-            System.out.println("Not found student with id: " + id);
-        } else {
-            if (courseList.enrolledStudent(stu) == true) {
-                System.out.println("Enroll successfully in course: " + courseList.getCode());
-                courseList.displayCourse();
-            } else {
-                System.out.println("Student already exist");
-            }
-        }
-    }
-
+//    public void displayEnrroledStudent() {
+//        System.out.println("----------DANH SACH SINH VIEN----------");
+//        listStudents.displayAll();
+//        System.out.println("Enter student'Id to enroll: ");
+//        Scanner sc = new Scanner(System.in);
+//        int id = sc.nextInt();
+//        Student stu = listStudents.findStudentById(id);
+//        if (stu == null) {
+//            System.out.println("Not found student with id: " + id);
+//        } else {
+//            if (courseList.enrolledStudent(stu) == true) {
+//                System.out.println("Enroll successfully in course: " + courseList.getCode());
+//                courseList.displayCourse();
+//            } else {
+//                System.out.println("Student already exist");
+//            }
+//        }
+//    }
     public void removeStudentById() {
         System.out.println("----------DANH SACH SINH VIEN----------");
         listStudents.displayAll();
@@ -139,6 +163,48 @@ public class FAP {
         for (Student stu : listStudents) {
             System.out.println(stu);
         }
+    }
+
+    public void sortStudetnByIdFAP() {
+        listStudents.sort(listStudents.sortStudentById());
+        System.out.println("DANH SACH DA SAP XEP");
+        for (Student stu : listStudents) {
+            System.out.println(stu);
+        }
+    }
+
+    /*ham nay enroll student bat ki vao course
+    - tim student dua vao id
+    - tim course dua vao code
+    - neu tim thay sv, course thi enroll sv tim duoc vao course
+     */
+    public void printEnrollInformation() {
+        Scanner sc = new Scanner(System.in);
+        printStudent();
+        System.out.print("Enter student id: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        Student findStudent = listStudents.findStudentById(id);
+        if (findStudent != null) {
+            printCourse();
+            System.out.print("Enter code: ");
+            String code = sc.nextLine();
+            Course findCourse = listCourse.findCode(code);
+
+            if (findCourse != null) {
+                if(findCourse.enrolledStudent(findStudent)) {
+                    System.out.println("Enrolled!!!");
+                    findCourse.displayCourse();
+                } else {
+                    System.out.println("Student already exist");
+                }
+            } else {
+                System.out.println("Course with code: " + code + " not found");
+            }
+        } else {
+            System.out.println("student with id: " + id + " not found");
+        }
+
     }
 
 }

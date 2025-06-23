@@ -13,6 +13,8 @@ public class Course {
         enrrolledStudent = new ArrayList<>();
     }
 
+    
+
     public String getCode() {
         return code;
     }
@@ -58,6 +60,7 @@ public class Course {
     
     public void displayCourse() {
         System.out.println("Code: " + code);
+        System.out.println("Credit: " + credit);
         System.out.println("----------DANH SACH SINH VIEN ENRROLLED----------");
         for (Student s : enrrolledStudent) {
             System.out.println(s);

@@ -14,8 +14,12 @@ public class Tester {
             System.out.println("6. Remove student by id"); //done
             System.out.println("7. Display student by major"); //done
             System.out.println("8. Sort student by (id, name): "); //done
-            System.out.println("------------------------------");
-            System.out.println("9. Enroll course");
+            System.out.println("9. add course from keyboard");//done
+            System.out.println("10. Print courses");//done
+            System.out.println("11. Enroll Student to the course");//done
+            System.out.println("12. In ra mon hoc co nhieu sv dk nhat");
+            System.out.println("13. in ra sv dk nhieu mon hoc nhat");
+            System.out.println("14. in ra tong so tin chi cua moi sv");
             Scanner sc = new Scanner(System.in);
             System.out.print("Enter choice: ");
             choice = sc.nextInt();
@@ -43,14 +47,30 @@ public class Tester {
                     system.displayStudentByMajor();
                     break;
                 case 8:
-                    system.sortStudentByName();
+                    System.out.println("Sort Student");
+                    System.out.print("Enter choice(1. name, 2. id): ");
+                    int choice_2 = sc.nextInt();
+                    switch(choice_2) {
+                        case 1:
+                            system.sortStudentByName();
+                            break;
+                        case 2:
+                            system.sortStudetnByIdFAP();
+                            break;
+                    }
                     break;
                 case 9:
-                    system.displayEnrroledStudent();
+                    system.addCourseFromKeyboard();
                     break;
                 case 10:
-                    System.exit(0);
+                    system.printCourse();
+                    break;
+                case 11:
+                    system.printEnrollInformation();
+                    break;
+               
+                    
             }
-        }while(choice <= 10);
+        }while(choice != 0);
     }
 }

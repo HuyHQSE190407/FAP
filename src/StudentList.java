@@ -61,6 +61,7 @@ public class StudentList extends ArrayList<Student> {
         }
         return rs;
     }
+
     public Comparator<Student> sortStudentByNameFunction() {
         return (Student o1, Student o2) -> {
             String[] nameParts1 = o1.getName().trim().split("\\s+");
@@ -75,5 +76,9 @@ public class StudentList extends ArrayList<Student> {
             }
             return result;
         };
+    }
+
+    public Comparator<Student> sortStudentById() {
+        return (s1, s2) -> Integer.compare(s1.getId(), s2.getId());
     }
 }
